@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+@mixin centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//clearfix
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+//media query
+@mixin sm {
+  @media screen and (min-width: $sm) {
+    @content;
+  }
+}
+@mixin md {
+  @media screen and (min-width: $md) {
+    @content;
+  }
+}
+@mixin lg {
+  @media screen and (min-width: $lg) {
+    @content;
+  }
+}
+@mixin xl {
+  @media screen and (min-width: $xl) {
+    @content;
+  }
+}
+
+// font-style
+@mixin textProperty(
+  $font-size: 10px, 
+  $font-weight: 400,
+  $text-align: left) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: $text-align;
+}
+
+// background
+@mixin backGround(
+  $url, 
+  $position: center center, 
+  $repeat: no-repeat, 
+  $size: cover) {
+  background-image: url('$url');
+  background-position: $position;
+  background-repeat: $repeat;
+  background-size: $size;
+}

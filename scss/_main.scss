@@ -1,0 +1,413 @@
+@charset "utf-8";
+
+/*
+** header
+*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(174, 197, 235, .9);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 99;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @include md {
+    padding: 56px 40px;
+    height: 100%;
+    width: 256px;
+    background-color: $mainColor;
+  }
+  &__logo {
+    padding: 8px 0;
+    font-family: 'Josefin Sans';
+    font-size: 1.6rem;
+    font-weight: normal;
+    text-align: center;
+    transition: background-color 0.3s linear 0s;
+    &:hover, &:focus {
+      background-color: $subColor01;
+      .sidebar__logo-title {
+      color: $subColor02;
+      }
+    }
+    @include md {
+      border: 2px solid $subColor01;
+    }
+  }
+}
+.side-menu {
+  display: none;
+  font-size: 1.4rem;
+  text-align: center;
+  .fa-caret-right {
+    color: $subColor02;
+    opacity: 0;
+  }
+  @include md {
+    display: block;
+    margin: 3rem 0 0 0;
+    border: none;
+    text-align: left;
+  }
+}
+.side-menu__item {
+  padding: .4em 0;
+  border-top: 1px solid $subColor01;
+  @include md {
+    padding: .6em 0;
+    border: none;
+    overflow-x: hidden;
+    transition: padding 0.3s linear 0s;
+  }
+  .fa-caret-right {
+    display: none;
+    @include md {
+      display: inline-block;
+    }
+  }
+  & > a {
+    display: inline-block;
+    width: 100%;
+    @include md {
+      display: inline;
+    }
+  }
+  &:hover, &:focus {
+    @include md {
+      padding: .6em .2em .6em .6em;
+      .fa-caret-right {
+        opacity: 1;
+      }
+    }
+  }
+}
+/*
+** ハンバーガーメニュー
+*/
+.btn {
+  position: fixed;
+  top: 14px;
+  right: 12px;
+  width: 1.6em;
+  height: 1.6em;
+  cursor: pointer;
+  @include md {
+    display: none;
+  }
+}
+.btn__text {
+  display: block;
+  margin-top: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.btn__menu {
+  appearance: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #26344a;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition: all 0.5s;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.btn__menu::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #26344a;
+  transition: all 0.5s;
+}
+.btn__menu::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #26344a;
+  transition: all 0.5s;
+}
+.btn__menu.active {
+  background: transparent;
+}
+.btn__menu.active::before {
+  top: 0;
+  transform: rotate(-405deg);
+}
+.btn__menu.active::after {
+  bottom: 0;
+  transform: rotate(405deg);
+}
+
+/*
+** main
+*/
+.main {
+  position: relative;
+  min-height: 360px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__wrap {
+    margin: 1rem;
+    padding: 2rem;
+    background: linear-gradient(
+      to right, transparent 5%, rgba(249, 222, 201, 0.4) 95%, transparent
+      ); //$subColor02
+    border-radius: .4rem;
+    @include md {
+      margin: 1rem 2rem 1rem 4rem;
+    }
+    @include lg {
+      margin: 4rem 2rem 1rem 4rem;
+      padding: 8rem 2rem 2rem 2rem;
+    }
+  }
+  &::after {
+    display: block;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: $headerHeight 0 0 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/main-sp.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -9;
+    @include md {
+      margin: 0 0 0 256px;
+      background-image: url("../img/main-pc.jpg");
+      background-position: center left;
+    }
+  }
+  @include md {
+    margin: 0 0 0 256px;
+  }
+}
+/*
+** top
+*/
+.main__top {
+  position: relative;
+  height: 100vh;
+  min-height: 360px;
+}
+.title-box {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  text-align: center;
+  @include md {
+    width: auto;
+  }
+  &__title {
+    display: inline-block;
+    font-family: 'Josefin Sans';
+    font-size: 3.2rem;
+    @include lg {
+      font-size: 4rem;
+    }
+  }
+  &__subtitle {
+    margin-top: 1em;
+    font-size: 1.2rem;
+    @include sm {
+      font-size: 1.6rem;
+    }
+    @include lg {
+      font-size: 2rem;
+    }
+  }
+}
+/*
+** profile
+*/
+// .profile {
+//   &__content {
+//   }
+// }
+
+/*
+** skills
+*/
+.skills {
+  .skills__content {
+    @include lg {
+      display: flex;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+  }
+  .list {
+    list-style: disc inside;
+    &__item:not(:last-child) {
+      @include lg {
+        padding: 0 0 .5rem 0;
+      }
+    }
+  }
+}
+
+/*
+** works
+*/
+.works {
+  // .content {
+  //   // max-width: 100%;
+  // }
+  &__intro {
+    @include lg {
+      margin: 0 auto;
+      // max-width: 80%;
+    }
+  }
+  .list {
+    @include lg {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__item {
+      margin: 4rem 0 0 0;
+      @include lg {
+        width: 50%;
+      }
+    }
+  }
+}
+.js-modal-open {
+  margin: 0 auto;
+  width: $modalWidthSm;
+  height: 100%;
+  cursor: pointer;
+}
+.js-modal-close {
+  position: absolute;
+  top: calc(#{$headerHeight} + .2rem);
+  right: calc((100% - #{$modalWidthSm}) * 0.5); //文字列を変数として認識させる
+  transform: translate(-50%, 0);
+  color: $subColor02;
+  @include md {
+    right: calc((100% - #{$modalWidthMd}) * 0.5);
+  }
+}
+.thumbnail {
+  margin: 0 auto;
+  text-align: center;
+  &__link {
+    display: inline-block;
+    margin: .6rem 0 0 0;
+    color: $subColor01;
+    text-decoration: underline;
+    transition: all 0.3s;
+    &:hover, &:focus {
+      opacity: .8;
+    }
+  }
+  .disable {
+    pointer-events: none;
+    text-decoration: line-through;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: $headerHeight;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include md {
+    z-index: 999;
+  }
+  &__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: scroll;
+  }
+  &__img {
+    position: absolute;
+    top: $headerHeight;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 2rem;
+    width: $modalWidthSm;
+    @include md {
+      max-width: 992px;
+      width: $modalWidthMd;
+    }
+  }
+}
+/*
+** contact
+*/
+.contact {
+  &__content {
+  display: flex;
+  justify-content: center;
+  }
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    @include lg {
+      padding: .2rem;
+      font-size: 1.2rem;
+    }
+  }
+  input[type="submit"] {
+    width: 64px;
+    height: 40px;
+    @include lg {
+      font-size: 1.2rem;
+    }
+  }
+  textarea {
+    width: 100%;
+    @include lg {
+      width: 640px;
+      font-size: 1.2rem;
+    }
+  }
+}
+/*
+** footer
+*/
+.footer {
+  width: 100%;
+  background-color: $mainColor;
+  line-height: 3rem;
+  text-align: center;
+  @include md {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 256px;
+    z-index: 99;
+  }
+}

@@ -1,0 +1,49 @@
+@charset "utf-8";
+/*
+** A Modern CSS Reset
+*/
+// customized 
+
+*, *::before, *::after {
+  box-sizing: border-box
+}
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  text-rendering: optimizeSpeed;
+}
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+}
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+table {
+  border-collapse: collapse;
+}
+th {
+  font-weight: normal;
+}
+// article>*+* {
+//   margin-top: 1em;
+// }
+
+// input, button, textarea, select {
+//   font: inherit;
+// }
+// img:not([alt]) {
+//   filter: blur(10px);
+// }
